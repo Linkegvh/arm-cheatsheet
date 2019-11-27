@@ -2,5 +2,4 @@
 
 All ARM assembly command names in a pdf summary.
 
-
-# ![Preview](/arm-cheatsheet.pdf)
+This is a repo that I pull from others, which i will add my own research into it.
