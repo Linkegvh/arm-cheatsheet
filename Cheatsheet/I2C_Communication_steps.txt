@@ -1,4 +1,5 @@
 I2C Communication steps (RX):
+
     1. Set I2C operation to default by disable the I2C interface (clear AA, STO, enable bit)
             I2CxCONCLR = 1100100; or I2CxCONCLR = (1 << 6) | (1 << 5) | (1 << 2);
     2. Enable the interface
