@@ -1,0 +1,37 @@
+I2C Communication steps (RX):
+    1. Set I2C operation to default by disable the I2C interface (clear AA, STO, enable bit)
+            I2CxCONCLR = 1100100; or I2CxCONCLR = (1 << 6) | (1 << 5) | (1 << 2);
+    2. Enable the interface
+            I2CxCONSET = (1 << 6);
+    3. Set the STA bit, so that the start bit will be sent after the SI bit is cleared
+            I2CxCONSET = (1 << 5);
+    4. Clear the SI bit, so that the start bit could be sent
+            I2CxCONCLR = (1 << 3);
+    5. Wait for the SI bit to become 1, this will indicate the previous transmission is complete
+            check (I2CxCONSET >> 3) % 0x01 == 1?
+    6. Write the slave address to Data register to send out
+            I2CxDAT = slave address + "1";
+    7. Clear the SI bit to send out the Data
+            I2CxCONCLR = (1 << 3);
+    8. Wait for the SI
+            check (I2CxCONSET >> 3) % 0x01 == 1?
+    9. Clear the STA bit, otherwise a repeating start will be sent // we do not want that as we have yet to receive any thing really)
+            I2CxCONCLR = (1 << 5);
+    10. Set AA to get ACK ready to be sent immediately when the one byte data is received
+            I2CxCONSET = (1 << 2);
+    11. Clear SI, to proceed further for the slave to send the data
+            I2CxCONCLR = (1 << 3);
+    12. Wait for the SI
+            check (I2CxCONSET >> 3) % 0x01 == 1?
+    13. Read data from the data register
+            retrive data from I2CxDAT
+
+if we are going to receive one more byte
+
+    14. Clear AA, to get ready to send NACK after received the last byte
+            I2CxCONCLR = (1 << 2);
+    15. - 17. Repeat 11. - 13.
+    18. Set STO to get stop bit ready
+            I2CxCONSET = (1 << 4);
+    19. Clear SI, so that the stop bit will be sent and the data transmission is terminated
+            I2CxCONCLR = (1 << 3);
