@@ -13,3 +13,6 @@ https://www-users.cs.york.ac.uk/~pcc/MCP/HAPR-Course-web/CMSIS/drivers/html/lpc1
 
 Example code:
 http://svn.lpc1850.com/Drivers/source/lpc18xx_gpio.c
+
+I2C Communication:
+http://www.ocfreaks.com/lpc2148-i2c-programming-tutorial/ (it is inside the reference folder with the name as LPC2148 I2C programming tutorial)
