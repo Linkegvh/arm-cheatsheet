@@ -9,3 +9,7 @@ There are two folders, the cheatsheet folder are for the smaller size cheatsheet
 Here are some very useful links: 
     /Users/miaocorgi/school_related/ARM
     http://www.davespace.co.uk/arm/introduction-to-arm/arithmetic.html
+    https://www-users.cs.york.ac.uk/~pcc/MCP/HAPR-Course-web/CMSIS/drivers/html/lpc17xx__gpio_8c.html
+
+Example code:
+    http://svn.lpc1850.com/Drivers/source/lpc18xx_gpio.c
